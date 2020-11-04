@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author abliger
- * @since 2020-10-14
+ * @since 2020-11-03
  */
 @RestController
 @RequestMapping("/edu/chapter")
