@@ -3,7 +3,7 @@
 
     <contextName>logback</contextName>
     <!-- 日志文件的位置 -->
-    <property name="log.path" value="D:/A-program/idea/program/guli/service/service-edu/log" />
+    <property name="log.path" value="D:/A-program/idea/program/guli/infrastructure/gateway/log" />
 
     <!--控制台日志格式：彩色日志-->
     <!-- magenta:洋红 -->
@@ -36,23 +36,6 @@
         </encoder>
     </appender>
 
-    <property name="GULI-CONSOLE_LOG_PATTERN"
-              value="%magenta(%date{HH:mm:ss}) |%highlight(%-5level) |%magenta(%thread)|%magenta(%file:%line) \n %magenta(%logger)|%cyan(%msg%n)"/>
-
-    <!--com.atguigu.guli输出到控制台-->
-    <appender name="GULI-CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <!--日志级别-->
-            <level>DEBUG</level>
-        </filter>
-        <encoder>
-            <!--日志格式-->
-            <Pattern>${GULI-CONSOLE_LOG_PATTERN}</Pattern>
-            <!--日志字符集-->
-            <charset>${ENCODING}</charset>
-        </encoder>
-    </appender>
-
     <!--输出到文件-->
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--日志过滤器：此日志文件只记录INFO级别的-->
@@ -71,31 +54,6 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 每天日志归档路径以及格式 -->
             <fileNamePattern>${log.path}/info/log-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <!--日志文件保留天数-->
-            <maxHistory>15</maxHistory>
-        </rollingPolicy>
-    </appender>
-
-    <appender name="GULI_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--日志过滤器：此日志文件只记录INFO级别的-->
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>debug</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-        <!-- 正在记录的日志文件的路径及文件名 -->
-        <file>${log.path}/log_guli.log</file>
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>${ENCODING}</charset>
-        </encoder>
-        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- 每天日志归档路径以及格式 -->
-            <fileNamePattern>${log.path}/info/log-guli-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -155,7 +113,7 @@
     <!--开发环境-->
     <springProfile name="dev">
         <!--可以灵活设置此处，从而控制日志的输出-->
-        <root level="info">
+        <root level="INFO">
             <appender-ref ref="CONSOLE" />
             <appender-ref ref="INFO_FILE" />
             <appender-ref ref="WARN_FILE" />
@@ -163,15 +121,10 @@
         </root>
     </springProfile>
 
-    <logger name="com.atguigu.guli" level="debug">
-        <appender-ref ref="GULI-CONSOLE" />
-        <appender-ref ref="GULI_FILE" />
-    </logger>
-
     <!--生产环境-->
     <springProfile name="prod">
         <root level="ERROR">
-            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="ERROR_FILE" />
         </root>
     </springProfile>
 

@@ -28,7 +28,7 @@ public class Swagger2Config {
                 .apiInfo(webApiInfo())
                 .select()
                 //只显示api路径下的页面
-                .paths(Predicates.and(PathSelectors.regex("/api/.*")))
+                .paths(Predicates.and(PathSelectors.ant("/*/api/**")))
                 .build();
     
     }
@@ -41,7 +41,7 @@ public class Swagger2Config {
                 .apiInfo(adminApiInfo())
                 .select()
                 //只显示admin路径下的页面
-                .paths(Predicates.and(PathSelectors.regex("/admin/.*")))
+                .paths(Predicates.and(PathSelectors.ant("/*/admin/**")))
                 .build();
         
     }
@@ -72,7 +72,7 @@ public class Swagger2Config {
                 .groupName("test")
                 .apiInfo(testApiInfo())
                 .select()
-                .paths(Predicates.and(PathSelectors.regex("/test/.*")))
+                .paths(Predicates.and(PathSelectors.ant("/*/test/**")))
                 .build();
     }
 

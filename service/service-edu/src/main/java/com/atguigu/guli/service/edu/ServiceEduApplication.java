@@ -2,6 +2,7 @@ package com.atguigu.guli.service.edu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 //修改主程序扫描的默认包
+@EnableDiscoveryClient
 @ComponentScan(basePackages = "com.atguigu.guli.service")
 public class ServiceEduApplication {
     public static void main(String[] args) {

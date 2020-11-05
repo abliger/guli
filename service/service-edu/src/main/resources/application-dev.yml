@@ -8,3 +8,7 @@ spring:
   cloud:
     nacos:
       server-addr: 47.101.11.235:8848
+
+#logging:
+#  level:
+#    root: info

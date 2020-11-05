@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(tags = "测试异常处理Controller")
-@RequestMapping("/test/")
+@RequestMapping("edu/test/")
 public class ExceptTestController {
     @ApiOperation("测试异常处理-全局异常Exception")
     @GetMapping("Except")
@@ -27,5 +27,11 @@ public class ExceptTestController {
     @GetMapping("GuliException")
     public R GuliException(){
         throw new GuliException(ResultCodeEnum.TEST_Exception);
+    }
+
+    @ApiOperation("测试访问")
+    @GetMapping("get")
+    public R get(){
+        return R.ok().message("访问正常");
     }
 }
