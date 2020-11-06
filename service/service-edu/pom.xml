@@ -11,11 +11,4 @@
 
     <artifactId>service-edu</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.atguigu</groupId>
-            <artifactId>service-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 </project>

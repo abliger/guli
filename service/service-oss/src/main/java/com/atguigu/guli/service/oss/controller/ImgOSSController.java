@@ -1,8 +1,11 @@
 package com.atguigu.guli.service.oss.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.atguigu.guli.service.base.exception.GuliException;
 import com.atguigu.guli.service.base.result.R;
 import com.atguigu.guli.service.base.result.ResultCodeEnum;
+import com.atguigu.guli.service.oss.entity.Uri;
 import com.atguigu.guli.service.oss.service.ImgService;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -61,13 +64,16 @@ public class ImgOSSController {
     }
 
     @ApiOperation("批量图片删除")
-    @DeleteMapping("delete/batch")
-    public R deleteBatchImgByUrls(@ApiParam("图片在OSS的地址") String[] url) {
-        if (url==null||url.length==0) {
+    @DeleteMapping(value = "delete/batch")
+    public R deleteBatchImgByUrls(@ApiParam("图片在OSS的地址") @RequestBody String url) {
+        log.debug(url);
+        Uri uri = JSON.parseObject(url, Uri.class);
+        String[] strings = uri.getUrl();
+        if (strings==null||strings.length==0) {
             throw new GuliException(ResultCodeEnum.IMG_URL_NOT_EXIST);
         }
-        log.debug(Arrays.toString(url));
-        imgService.deleteBatchImgByUrls(Arrays.asList(url));
+        log.debug(Arrays.toString(strings));
+        imgService.deleteBatchImgByUrls(Arrays.asList(strings));
         return R.ok().message("删除成功");
     }
 }

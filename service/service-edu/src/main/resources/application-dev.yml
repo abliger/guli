@@ -8,6 +8,12 @@ spring:
   cloud:
     nacos:
       server-addr: 47.101.11.235:8848
+logging:
+  level:
+    com.atguigu.guli.service.edu.feign.OssFileFeignClient: debug #以什么级别监控哪个接口
+
+
+
 
 #logging:
 #  level:

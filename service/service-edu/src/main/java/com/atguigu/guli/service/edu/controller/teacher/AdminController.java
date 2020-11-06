@@ -84,10 +84,9 @@ public class AdminController {
 
     @ApiOperation("批量删除讲师")
     @DeleteMapping("delete/list/{ids}")
-    public R deleteTeachersByIds(@ApiParam("讲师id") @PathVariable List<Integer> ids){
-        log.debug(ids.toString());
-        System.out.println(ids);
-        boolean delete = teacherService.removeByIds(ids);
+    public R deleteTeachersByIds(@ApiParam("讲师id") @PathVariable String[] ids){
+        log.debug(Arrays.toString(ids));
+        boolean delete = teacherService.removeByIds(Arrays.asList(ids));
         if (delete){
             return R.ok().message("删除成功");
         }
