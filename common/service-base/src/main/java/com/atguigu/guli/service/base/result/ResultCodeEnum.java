@@ -9,9 +9,9 @@ public enum ResultCodeEnum {
 
     SUCCESS(true, 20000,"成功"),
     UNKNOWN_REASON(false, 20001, "未知错误"),
-
-    TEST_Exception(false,20010,"测试错误");
-
+    TEST_Exception(false,20010,"测试错误"),
+    FILE_NOT_EXIST(false,20100,"文件不存在"),
+    IMG_URL_NOT_EXIST(false,20200 ,"图片地址不存在" );
 
 
     private final Boolean success;

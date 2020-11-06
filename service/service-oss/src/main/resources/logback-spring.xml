@@ -3,7 +3,7 @@
 
     <contextName>logback</contextName>
     <!-- 日志文件的位置 -->
-    <property name="log.path" value="D:/A-program/idea/program/guli/service/service-edu/log" />
+    <property name="log.path" value="D:/A-program/idea/program/guli/service/service-oss/log" />
 
     <!--控制台日志格式：彩色日志-->
     <!-- magenta:洋红 -->

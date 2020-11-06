@@ -1,10 +1,10 @@
 server:
   port: 9999
-
 spring:
+  profiles:
+    active: dev
   application:
     name: gateWay
-
   cloud:
     nacos:
       server-addr: 47.101.11.235:8848
@@ -15,6 +15,10 @@ spring:
           uri: lb://service-edu
           predicates:
             - Path=/edu/**
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+            - Path=/oss/**
 #      globalcors:
 #        cors-configurations:
 #          '[/**]':
@@ -35,8 +39,6 @@ spring:
 #            max-age: 3600
 
   #gateway 项目自动路径映射，一般不使用，因为无法细粒度的配置具体的过滤规则
-  profiles:
-    active: dev
 #    gateway:
 #      discovery:
 #        locator:

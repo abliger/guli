@@ -1,0 +1,12 @@
+server:
+  port: 8120 # 服务端口
+spring:
+  profiles:
+    active: dev # 环境设置
+
+  application:
+    name: service-oss
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis日志
