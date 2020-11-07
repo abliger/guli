@@ -10,4 +10,5 @@ public class OpenFeignConfig {
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
+
 }

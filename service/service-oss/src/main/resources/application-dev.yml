@@ -1,17 +1,3 @@
-
-spring:
-  cloud:
-    nacos:
-      server-addr: 47.101.11.235:8848
-
-aliyun:
-  oss:
-    endpoint: oss-cn-shanghai.aliyuncs.com #oss-cn-shanghai.aliyuncs.com
-    keyId: LTAI4GJ6wfvyJ7HM7XF2dREk
-    keySecret: l8rHTks7MviKAJmP48JMgqUFT6wFOx
-    #bucket可以在控制台创建，也可以使用java代码创建，注意先测试bucket是否已被占用
-    # bucket一般会直接在控制台创建
-    bucketName: guli-abliger-file
 #logging:
 #  level:
 #    root: info

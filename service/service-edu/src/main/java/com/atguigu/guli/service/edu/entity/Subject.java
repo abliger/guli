@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -19,6 +20,7 @@ import lombok.experimental.Accessors;
  * @since 2020-11-03
  */
 @Data
+@ToString
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("edu_subject")

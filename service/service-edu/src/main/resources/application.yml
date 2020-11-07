@@ -1,12 +1,13 @@
 server:
   port: 8110 # 服务端口
-spring:
-  profiles:
-    active: dev # 环境设置
-
-  application:
-    name: service-edu
+#spring:
+#  profiles:
+#    active: dev # 环境设置
+#
+#  application:
+#    name: service-edu
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #mybatis日志
+  mapper-locations: classpath:com/atguigu/guli/service/edu/mapper/xml/*.xml

@@ -1,20 +1,46 @@
 
 spring:
-  datasource: # mysql数据库连接
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-uf6f305on2m87y30mlo.mysql.rds.aliyuncs.com:3306/guli_edu?serverTimezone=GMT%2B8
-    username: abliger
-    password: w2KAi3pRmTdnx3qp
   cloud:
-    nacos:
-      server-addr: 47.101.11.235:8848
+    sentinel:
+      transport:
+#        dashboard: 47.101.11.235:8888
+        dashboard: localhost:8080
+        port: 8888
+        heartbeat-interval-ms: 1000
+#        clientIp: tcp://3497773c9k.zicp.vip:46353
+      eager: true
+      filter:
+        url-patterns: /**
+      log:
+        dir: D:/A-program/idea/program/guli/service/service-edu/log/sentinel
+
 logging:
   level:
     com.atguigu.guli.service.edu.feign.OssFileFeignClient: debug #以什么级别监控哪个接口
-
-
-
-
+# 请求连接的超时时间
+#ribbon:
+#  okhttp:
+#    enabled: true
 #logging:
 #  level:
 #    root: info
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 3000
+  sentinel:
+    enabled: true
+
+#csp:
+#  sentinel:
+#    dashboard:
+#      server: localhost:8080
+#    api:
+#      port: 8888
+#    heartbeat:
+#      client:
+#        ip: abliger.utools.club
+#      interval:
+#        ms: 200

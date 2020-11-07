@@ -4,12 +4,14 @@ import com.atguigu.guli.service.base.result.R;
 import com.atguigu.guli.service.base.result.ResultCodeEnum;
 import com.atguigu.guli.service.edu.feign.OssFileFeignClient;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import sun.util.calendar.LocalGregorianCalendar;
 
 /**
  * @author abliger
  */
 @Slf4j
+@Service
 public class OSSFileFeignClientImpl implements OssFileFeignClient {
     @Override
     public R deleteImgByUrl(String url) {

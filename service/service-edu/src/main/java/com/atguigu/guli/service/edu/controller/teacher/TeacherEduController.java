@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 @Api(tags = "讲师管理")
 @RequestMapping("edu/admin/teacher")
-public class AdminController {
+public class TeacherEduController {
     @Autowired
     private TeacherService teacherService;
 

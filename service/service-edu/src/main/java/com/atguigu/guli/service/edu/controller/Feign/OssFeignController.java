@@ -2,11 +2,10 @@ package com.atguigu.guli.service.edu.controller.Feign;
 
 import com.atguigu.guli.service.base.result.R;
 import com.atguigu.guli.service.edu.feign.OssFileFeignClient;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import sun.rmi.runtime.Log;
 
@@ -26,14 +25,17 @@ public class OssFeignController {
 
     @ApiOperation("图片删除")
     @DeleteMapping("delete")
-    public R deleteImgByUrl(@ApiParam("图片在OSS的地址") @RequestParam String url){
+    public R deleteImgByUrl(@ApiParam(value = "图片在OSS的地址" ,
+            examples=@Example({@ExampleProperty(mediaType = "application/json", value = "{'url'='avater/2020/11/06/xxx.jpg'}")})) @RequestParam String url){
         log.debug("图片删除url:"+url);
         return ossFileFeignClient.deleteImgByUrl(url);
     }
 
     @ApiOperation("批量图片删除")
     @DeleteMapping("delete/batch")
-    public R deleteBatchImgByUrls(@ApiParam("图片在OSS的地址")@RequestBody String url){
+    public R deleteBatchImgByUrls(@ApiParam(value="图片在OSS的地址",
+            examples=@Example(value = @ExampleProperty(mediaType = "application/json", value = "{'url':'[avater/2020/11/06/xxx.jpg, avater/2020/11/06/xxx.jpg, avater/2020/11/06/xxx.jpg]'}")))
+                                      @RequestBody String url){
         log.debug(url);
         return ossFileFeignClient.deleteBatchImgByUrls(url);
     }

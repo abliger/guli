@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.guli.service.edu.mapper.SubjectMapper">
-
+<!--    <insert id="saveExcel" parameterType="">-->
+<!--&lt;!&ndash;        insert into guli_edu.edu_subject values&ndash;&gt;-->
+<!--&lt;!&ndash;        <foreach collection="List<ExcelSubject>" separator="," item="this">&ndash;&gt;-->
+<!--&lt;!&ndash;            (this.)&ndash;&gt;-->
+<!--&lt;!&ndash;        </foreach>&ndash;&gt;-->
+<!--    </insert>-->
+    <resultMap id="subjectListQueryMap" type="com.atguigu.guli.service.edu.entity.admin.Query.SubjectList">
+        <id property="levelOneId" column="oneId"/>
+        <result property="levelOneTitle" column="oneTitle"/>
+        <collection property="children" ofType="com.atguigu.guli.service.edu.entity.admin.Query.SubjectList">
+            <id property="levelOneId" column="twoId"/>
+            <result property="levelOneTitle" column="twoTitle"/>
+        </collection>
+    </resultMap>
+    <select id="subjectListQuery" resultMap="subjectListQueryMap">
+        select s1.id oneId,s1.title oneTitle,s2.id twoId,s2.title twoTitle
+        from edu_subject s1
+        LEFT JOIN edu_subject s2
+        on s1.id=s2.parent_id
+        where s1.parent_id=0
+    </select>
 </mapper>
